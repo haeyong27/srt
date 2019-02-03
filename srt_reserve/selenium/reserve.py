@@ -1,8 +1,6 @@
 import time
 from selenium import webdriver
-# from ..crawl import url_generator
 
-# url_generator.
 
 class Reserve():
     def __init__(self):
@@ -26,7 +24,8 @@ class Reserve():
     def get_url(self):
         pass
 
-
+a = Reserve()
+a.login('01021843577', 'sphv8401')
 # url = 'https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000&dptRsStnCd=0020&arvRsStnCd=0552&stlbTrnClsfCd=05&psgNum=1&seatAttCd=015&isRequest=Y&dptRsStnCdNm=부산&arvRsStnCdNm=동탄&dptDt=20190205&dptTm=000000&chtnDvCd=1&psgInfoPerPrnb1=1&psgInfoPerPrnb5=0&psgInfoPerPrnb4=0&psgInfoPerPrnb2=0&psgInfoPerPrnb3=0&locSeatAttCd1=000&rqSeatAttCd1=015&trnGpCd=109'
 # driver.get(url)
 # a = driver.find_elements_by_xpath('//a[@onclick="requestReservationInfo(this, 0, \'2\', \'1101\', true, false); return false;"]')
