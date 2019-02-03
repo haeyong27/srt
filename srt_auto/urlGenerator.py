@@ -1,8 +1,8 @@
-import find_station_num
+import stationNum
 
 class URL_gen():
     def __init__(self, start='부산', end='동탄', date='20190205', person = 1, dpTime = 0):
-        c = find_station_num.StationNum()
+        c = stationNum.StationNum()
         self.station_dic = c.station_num()
         self.url_base = 'https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000'
         self.url = 'dptRsStnCd=0552&arvRsStnCd=0020&stlbTrnClsfCd=05&psgNum=1&seatAttCd=015&isRequest=Y&dptRsStnCdNm=%EB%8F%99%ED%83%84&arvRsStnCdNm=%EB%B6%80%EC%82%B0&dptDt=20190203&dptTm=105900&chtnDvCd=1&psgInfoPerPrnb1=1&psgInfoPerPrnb5=0&psgInfoPerPrnb4=0&psgInfoPerPrnb2=0&psgInfoPerPrnb3=0&locSeatAttCd1=000&rqSeatAttCd1=015&trnGpCd=109'
@@ -22,6 +22,7 @@ class URL_gen():
         params['arvRsStnCdNm'] = self.end
         params['dptDt'] = self.date
         params['psgInfoPerPrnb1'] = self.person
+
         if (self.dpTime < 10):
             params['dptTm'] = '0' + str(self.dpTime) + '0000'
         else:
@@ -32,20 +33,3 @@ class URL_gen():
             url += '&' + i + '=' + str(params[i])
 
         return url
-
-
-    def parse_url(self):
-        d = {}
-        for i in self.url.split('&'):
-            a, b = i.split('=')
-            d[a] = b
-        return d
-
-
-a = URL_gen('부산', '동탄', '20190205')
-print(a.generate())
-
-
-
-
-    

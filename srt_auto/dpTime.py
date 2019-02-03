@@ -1,8 +1,9 @@
 import requests
+import math
 from bs4 import BeautifulSoup
 
 class ReserveButton:
-    def __init__(self, request):
+    def __init__(self, request = 'https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000&dptRsStnCd=0020&arvRsStnCd=0552&stlbTrnClsfCd=05&psgNum=1&seatAttCd=015&isRequest=Y&dptRsStnCdNm=부산&arvRsStnCdNm=동탄&dptDt=20190205&dptTm=000000&chtnDvCd=1&psgInfoPerPrnb1=1&psgInfoPerPrnb5=0&psgInfoPerPrnb4=0&psgInfoPerPrnb2=0&psgInfoPerPrnb3=0&locSeatAttCd1=000&rqSeatAttCd1=015&trnGpCd=109'):
         response = requests.get(request)
         html = response.text
         self.soup = BeautifulSoup(html, 'html.parser')
@@ -12,7 +13,8 @@ class ReserveButton:
         timeList = []
         for tag in self.soup.select('.time'):
             if i%2 == 0: 
-                timeList.append(tag.text)
+                a, b = tag.text.split(':')
+                timeList.append(int(a)+math.ceil(int(b)/60.))
             i += 1
         return timeList
 
