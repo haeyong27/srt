@@ -42,7 +42,7 @@ class URL_gen():
         return d
 
 if __name__ == "__main__":
-    a = URL_gen('지제', '오송', '20190204')
+    a = URL_gen('부산', '동탄', '20190205')
     print(a.generate())
 
 
