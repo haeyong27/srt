@@ -1,4 +1,4 @@
-import stationNum
+from . import stationNum
 
 class URL_gen():
     def __init__(self, start='부산', end='동탄', date='20190205', person = 1, dpTime = 0):
@@ -14,6 +14,15 @@ class URL_gen():
         self.start_stn_num = self.station_dic[start]
         self.end_stn_num = self.station_dic[end]
 
+
+    def parse_url(self):	
+        d = {}	
+        for i in self.url.split('&'):	
+            a, b = i.split('=')	
+            d[a] = b	
+        return d
+
+        
     def generate(self):
         params = self.parse_url()
         params['dptRsStnCd'] = self.start_stn_num
@@ -29,7 +38,8 @@ class URL_gen():
             params['dptTm'] = str(self.dpTime) + '0000'
 
         url = self.url_base
+
         for i in params:
             url += '&' + i + '=' + str(params[i])
-
+        
         return url
