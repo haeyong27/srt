@@ -1,7 +1,7 @@
 import crawl
 
 class URL_gen():
-    def __init__(self, start, end, date, dpTime):
+    def __init__(self, start, end, date, person = 1, dpTime = 0):
         c = crawl.Crawl()
         self.station_dic = c.station_num()
         self.url_base = 'https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000'
@@ -9,6 +9,7 @@ class URL_gen():
         self.start = start
         self.end = end
         self.date = date
+        self.person = person
         self.dpTime = dpTime
         self.start_stn_num = self.station_dic[start]
         self.end_stn_num = self.station_dic[end]
@@ -20,11 +21,15 @@ class URL_gen():
         params['dptRsStnCdNm'] = self.start
         params['arvRsStnCdNm'] = self.end
         params['dptDt'] = self.date
-        params['dptTm'] = str(self.dpTime) + '0000'
+        params['psgInfoPerPrnb1'] = self.person
+        if (self.dpTime < 10):
+            params['dptTm'] = '0' + str(self.dpTime) + '0000'
+        else:
+            params['dptTm'] = str(self.dpTime) + '0000'
 
         url = self.url_base
         for i in params:
-            url += '&' + i + '=' + params[i]
+            url += '&' + i + '=' + str(params[i])
 
         return url
 
@@ -36,8 +41,9 @@ class URL_gen():
             d[a] = b
         return d
 
-a = URL_gen('지제', '오송', '20190204', 12)
-print(a.generate())
+if __name__ == "__main__":
+    a = URL_gen('지제', '오송', '20190204')
+    print(a.generate())
 
 
 
