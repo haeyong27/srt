@@ -64,7 +64,7 @@ class Reserve():
 
 
 a = Reserve('01022969002')
-a.login('1785043400', 'kimdo82!!',)
+a.login('1785043400', 'kimdo82!!',1)
 a.driver.get(a.get_reserve_url('부산', '천안아산', 20190205, 2, 0, 12))
 # a.driver.get(a.get_reserve_url('광주송정', '동탄', 20190205, 2, 1, 14))
 time.sleep(2)
