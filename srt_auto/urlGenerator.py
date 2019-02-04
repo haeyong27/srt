@@ -1,45 +1,44 @@
-from . import stationNum
+import stationNum
 
-class URL_gen():
-    def __init__(self, start='부산', end='동탄', date='20190205', person = 1, dpTime = 0):
+class UrlGen():
+    def __init__(self, start='부산', end='동탄', date='20190205', adult=1, kid=0, dp_time=0):
         c = stationNum.StationNum()
         self.station_dic = c.station_num()
         self.url_base = 'https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000'
-        self.url = 'dptRsStnCd=0552&arvRsStnCd=0020&stlbTrnClsfCd=05&psgNum=1&seatAttCd=015&isRequest=Y&dptRsStnCdNm=%EB%8F%99%ED%83%84&arvRsStnCdNm=%EB%B6%80%EC%82%B0&dptDt=20190203&dptTm=105900&chtnDvCd=1&psgInfoPerPrnb1=1&psgInfoPerPrnb5=0&psgInfoPerPrnb4=0&psgInfoPerPrnb2=0&psgInfoPerPrnb3=0&locSeatAttCd1=000&rqSeatAttCd1=015&trnGpCd=109'
-        self.start = start
-        self.end = end
-        self.date = date
-        self.person = person
-        self.dpTime = dpTime
-        self.start_stn_num = self.station_dic[start]
-        self.end_stn_num = self.station_dic[end]
+        self.url = 'stlbTrnClsfCd=05&trnGpCd=109&psgNum=1&seatAttCd=015&isRequest=Y&dptRsStnCd=0015&arvRsStnCd=0552&dptDt=20190205&dptTm=100000&psgInfoPerPrnb1=1&psgInfoPerPrnb5=0'
+        self.date = date #날짜
+        self.adult = adult #인원
+        self.kid = kid
+        self.dp_time = dp_time #어느 시간 이후로 예약할지
+        self.start_stn_num = self.station_dic[start] #역 번호
+        self.end_stn_num = self.station_dic[end] #역 번호
 
 
-    def parse_url(self):	
-        d = {}	
-        for i in self.url.split('&'):	
-            a, b = i.split('=')	
-            d[a] = b	
-        return d
+    def parse_url(self):
+        dic = {}
+        for i in self.url.split('&'):
+            key, value = i.split('=')
+            dic[key] = value
+        return dic
 
         
     def generate(self):
         params = self.parse_url()
         params['dptRsStnCd'] = self.start_stn_num
         params['arvRsStnCd'] = self.end_stn_num
-        params['dptRsStnCdNm'] = self.start
-        params['arvRsStnCdNm'] = self.end
         params['dptDt'] = self.date
-        params['psgInfoPerPrnb1'] = self.person
-
-        if (self.dpTime < 10):
-            params['dptTm'] = '0' + str(self.dpTime) + '0000'
+        params['psgInfoPerPrnb1'] = self.adult
+        params['psgInfoPerPrnb5'] = self.kid
+        if (int(self.dp_time) < 10):
+            params['dptTm'] = '0' + str(self.dp_time) + '0000'
         else:
-            params['dptTm'] = str(self.dpTime) + '0000'
+            params['dptTm'] = str(self.dp_time) + '0000'
 
         url = self.url_base
-
         for i in params:
             url += '&' + i + '=' + str(params[i])
         
         return url
+
+# a = UrlGen('동대구', '동탄', 20190206, 3, 2, 14)
+# print(a.generate())

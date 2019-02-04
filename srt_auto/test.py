@@ -1,4 +1,4 @@
-from . import reserve
+import reserve
 
 
 class Test:

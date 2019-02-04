@@ -1,6 +1,6 @@
 import time
 from selenium import webdriver
-from . import urlGenerator, dpTime
+import urlGenerator, dpTime
 
 class Reserve():
     def __init__(self):
@@ -24,17 +24,8 @@ class Reserve():
     
 
     def get_reserve_url(self):
-        a = urlGenerator.URL_gen()
+        a = urlGenerator.UrlGen()
         return a.generate()
-
-
-    def find_dpTime(self, start=5, end=10):
-        timeList = dpTime.ReserveButton(self.get_reserve_url()).search_dpTime()
-        selected_time = []
-        for a, i in enumerate(timeList):
-            if (i>=start and i<=end):
-                selected_time.append(a)
-        return selected_time
 
 
     def button_click(self, i):
