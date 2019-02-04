@@ -30,5 +30,3 @@ class Test:
             if (a.complete()==1):
                 break
 
-a = Test('01029283746 에다가 예약됐다고 문자보내', '01021843577', 'sphv8401', '동대구', '동탄', 20190209, 1, 0, 12, 12, 14)
-a.execute_reserve()

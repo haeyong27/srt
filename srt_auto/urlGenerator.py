@@ -1,7 +1,7 @@
 import stationNum
 
 class UrlGen():
-    def __init__(self, start='부산', end='동탄', date='20190205', adult=1, kid=0, dp_time=0):
+    def __init__(self, start='부산', end='동탄', date='20190205', adult=1, kid=0, dp_time = 0):
         c = stationNum.StationNum()
         self.station_dic = c.station_num()
         self.url_base = 'https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000'

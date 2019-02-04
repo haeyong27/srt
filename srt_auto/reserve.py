@@ -13,18 +13,22 @@ class Reserve():
         
 
     def login(self, id, pw):
-        time.sleep(1)
-        tag_category = self.driver.find_element_by_id('srchDvCd3')
-        tag_category.click()
-        time.sleep(1)
-        tag_id = self.driver.find_element_by_id('srchDvNm03')
-        tag_id.send_keys(str(id))
-        time.sleep(1)
-        tag_pw = self.driver.find_element_by_id('hmpgPwdCphd03')
-        tag_pw.send_keys(str(pw))
-        time.sleep(1)
-        tag_pw.submit()
-    
+
+        for n in [1, 2, 3]:
+            time.sleep(1)
+            tag_category = self.driver.find_element_by_id('srchDvCd{}'.format(n))
+            tag_category.click()
+            time.sleep(1)
+            tag_id = self.driver.find_element_by_id('srchDvNm0{}'.format(n))
+            tag_id.send_keys(str(id))
+            time.sleep(1)
+            tag_pw = self.driver.find_element_by_id('hmpgPwdCphd0{}'.format(n))
+            tag_pw.send_keys(str(pw))
+            time.sleep(1)
+            tag_pw.submit()
+            time.sleep(1)
+            self.driver.switch_to_alert().accept()
+        
 
     def get_reserve_url(self, start_stn, end_stn, date, adult, kid, dp_time):
         #원하는 조건 만족하는 예약 창 열기
@@ -58,3 +62,4 @@ class Reserve():
             return 1
         except:
             return 0
+
