@@ -3,7 +3,7 @@ from selenium import webdriver
 import url_generator, dpTime, sendingMail
 
 class Reserve():
-    def __init__(self, phone):
+    def __init__(self, phone = 0):
         #창 열기
         self.phone = phone
         self.driver = webdriver.Chrome('./chromedriver')
@@ -55,12 +55,22 @@ class Reserve():
             return 0
 
 
-a = Reserve('01021843577')
-a.login('01021843577', 'sphv8401',3)
-url = a.get_reserve_url('부산', '동탄', 20190209, 1, 0, 12)
-a.driver.get(url)
-time.sleep(1)
-while(True):
-    a.find_dpTime_click(12, 15)
-    if (a.complete()==1):
-        break
+    def last(self, phone, idd, pw, n, start, end, date, ts, te, adult, kid):
+ 
+        a = Reserve(phone)
+        a.login(idd, pw, n)
+        url = a.get_reserve_url(start, end, date, adult, kid, ts)
+        a.driver.get(url)
+        time.sleep(1)
+        while(True):
+            a.find_dpTime_click(ts, te)
+            if (a.complete()==1):
+                break
+
+a = Reserve()
+a.last('1022969002','1785043400','kimdo82!!','부산','천안아산역','05022019',12,15,2,0)
+a.last('1080810724','1582373708','dltmdrl87!','광주송정','수서','05022019',18, 18,1,0)
+a.last('1089739468','1592364224','qwert1234','부산','수서','05022019',13,16,2,0)
+a.last('1023803559','1580376558','7135','광주송정','동탄','05022019',14,23,2,1)
+a.last('1033131806','happygiki','kcb1231','나주','동탄','05012019',18,3,0)
+							
