@@ -55,22 +55,22 @@ class Reserve():
             return 0
 
 
-    def last(self, phone, idd, pw, n, start, end, date, ts, te, adult, kid):
- 
-        a = Reserve(phone)
-        a.login(idd, pw, n)
-        url = a.get_reserve_url(start, end, date, adult, kid, ts)
-        a.driver.get(url)
-        time.sleep(1)
-        while(True):
-            a.find_dpTime_click(ts, te)
-            if (a.complete()==1):
-                break
+def llast(phone, idd, pw, n, start, end, date, ts, te, adult, kid):
+
+    a = Reserve(phone)
+    a.login(idd, pw, n)
+    url = a.get_reserve_url(start, end, date, adult, kid, ts)
+    a.driver.get(url)
+    time.sleep(1)
+    while(True):
+        a.find_dpTime_click(ts, te)
+        if (a.complete()==1):
+            break
 
 a = Reserve()
-a.last('1022969002','1785043400', 1, 'kimdo82!!','부산','천안아산역','20190205',12,15,2,0)
-a.last('1080810724','1582373708',1, 'dltmdrl87!','광주송정','수서','20190205',18, 18,1,0)
-a.last('1089739468','1592364224',1, 'qwert1234','부산','수서','20190205',13,16,2,0)
-a.last('1023803559','1580376558',1, '7135','광주송정','동탄','20190205',14,23,2,1)
-a.last('1033131806','happygiki',1, 'kcb1231','나주','동탄','20190205',18, 18,3,0)
+llast('1022969002','1785043400',  'kimdo82!!',1,'부산','천안아산역','20190205',12,15,2,0)
+# a.last('1080810724','1582373708', 'dltmdrl87!',1,'광주송정','수서','20190205',18, 18, 1,0)
+# a.last('1089739468','1592364224', 'qwert1234',1,'부산','수서','20190205',13,16,2,0)
+# a.last('1023803559','1580376558', '7135',1,'광주송정','동탄','20190205',14,23,2,1)
+# a.last('1033131806','happygiki', 'kcb1231',1,'나주','동탄','20190205',18, 18,3,0)
 							
