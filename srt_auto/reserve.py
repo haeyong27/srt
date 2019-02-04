@@ -1,10 +1,11 @@
 import time
 from selenium import webdriver
-import urlGenerator, dpTime
+import urlGenerator, dpTime, sendingMail
 
 class Reserve():
-    def __init__(self):
+    def __init__(self, phone):
         #창 열기
+        self.phone = phone
         self.driver = webdriver.Chrome('./chromedriver')
         self.url = 'https://etk.srail.co.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000'
         self.driver.get(self.url)
@@ -12,7 +13,6 @@ class Reserve():
         
 
     def login(self, id, pw):
-        #로그인
         time.sleep(1)
         tag_category = self.driver.find_element_by_id('srchDvCd3')
         tag_category.click()
@@ -51,7 +51,10 @@ class Reserve():
     def complete(self):
         try:
             self.driver.find_element_by_class_name('alert_box')
-            self.driver.get('https://www.naver.com/')
+            # self.driver.get('https://www.naver.com/')
+            #네이버 접속 대신 메일 보내면 완성
+            sendingMail.Mail(self.phone)
+
             return 1
         except:
             return 0
