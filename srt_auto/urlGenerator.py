@@ -39,6 +39,3 @@ class UrlGen():
             url += '&' + i + '=' + str(params[i])
         
         return url
-
-# a = UrlGen('동대구', '동탄', 20190206, 3, 2, 14)
-# print(a.generate())
