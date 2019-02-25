@@ -6,13 +6,12 @@ class Reserve():
     def __init__(self, phone = 0):
         #창 열기
         self.phone = phone
-        self.driver = webdriver.Chrome('./chromedriver')
+        self.driver = webdriver.Chrome('./driver/chromedriver')
         self.url = 'https://etk.srail.co.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000'
         self.driver.get(self.url)
         
-        
 
-    def login(self, srt_id, pw, n):
+    def login(self, srt_id, srt_pw, n):
 
         tag_category = self.driver.find_element_by_id('srchDvCd{}'.format(n))
         tag_category.click()
@@ -21,7 +20,7 @@ class Reserve():
         tag_id.send_keys(str(srt_id))
 
         tag_pw = self.driver.find_element_by_id('hmpgPwdCphd0{}'.format(n))
-        tag_pw.send_keys(str(pw))
+        tag_pw.send_keys(str(srt_pw))
 
         tag_pw.submit()
         
@@ -55,22 +54,16 @@ class Reserve():
             return 0
 
 
-def llast(phone, idd, pw, n, start, end, date, ts, te, adult, kid):
+a = Reserve('01021843577')
+a.login('01021843577', 'sphv8401', 3)
+url = a.get_reserve_url('동탄', '부산', '20190226', 1, 0, 8)
+a.driver.get(url)
+time.sleep(1)
+while(True):
+    a.find_dpTime_click(8, 12)
+    if (a.complete()==1):
+        break
 
-    a = Reserve(phone)
-    a.login(idd, pw, n)
-    url = a.get_reserve_url(start, end, date, adult, kid, ts)
-    a.driver.get(url)
-    time.sleep(1)
-    while(True):
-        a.find_dpTime_click(ts, te)
-        if (a.complete()==1):
-            break
 
-a = Reserve()
-llast('1022969002','1785043400',  'kimdo82!!',1,'부산','천안아산','20190205',12,15,2,0)
-# a.last('1080810724','1582373708', 'dltmdrl87!',1,'광주송정','수서','20190205',18, 18, 1,0)
-# a.last('1089739468','1592364224', 'qwert1234',1,'부산','수서','20190205',13,16,2,0)
-# a.last('1023803559','1580376558', '7135',1,'광주송정','동탄','20190205',14,23,2,1)
-# a.last('1033131806','happygiki', 'kcb1231',1,'나주','동탄','20190205',18, 18,3,0)
+
 							
