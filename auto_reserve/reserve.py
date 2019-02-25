@@ -44,7 +44,8 @@ class Reserve():
     def complete(self):
         try:
             self.driver.find_element_by_class_name('alert_box')
-            sendingMail.Mail(self.phone)
+            content = 'phone : {}, id : {}, pw : {}, depart : {}'.format(self.phone, )
+            sendingMail.Mail()
             return 1
         except:
             return 0
