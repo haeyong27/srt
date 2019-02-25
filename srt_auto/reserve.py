@@ -10,18 +10,15 @@ class Reserve():
         self.url = 'https://etk.srail.co.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000'
         self.driver.get(self.url)
         
-
+    # 로그인하기
     def login(self, srt_id, srt_pw, n):
 
         tag_category = self.driver.find_element_by_id('srchDvCd{}'.format(n))
         tag_category.click()
-
         tag_id = self.driver.find_element_by_id('srchDvNm0{}'.format(n))
         tag_id.send_keys(str(srt_id))
-
         tag_pw = self.driver.find_element_by_id('hmpgPwdCphd0{}'.format(n))
         tag_pw.send_keys(str(srt_pw))
-
         tag_pw.submit()
         
         
@@ -31,7 +28,6 @@ class Reserve():
         self.url = c.generate()
         return self.url
         
-
     def find_dpTime_click(self, start, end):
         time_list = dpTime.ReserveButton(self.url).search_dpTime()
         selected_time = []
@@ -53,16 +49,6 @@ class Reserve():
         except:
             return 0
 
-
-a = Reserve('01021843577')
-a.login('01021843577', 'sphv8401', 3)
-url = a.get_reserve_url('동탄', '부산', '20190226', 1, 0, 8)
-a.driver.get(url)
-time.sleep(1)
-while(True):
-    a.find_dpTime_click(8, 12)
-    if (a.complete()==1):
-        break
 
 
 

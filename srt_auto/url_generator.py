@@ -39,6 +39,3 @@ class UrlGen():
             url += '&' + i + '=' + str(params[i])
         
         return url
-
-a= UrlGen('부산', '천안아산', 20190205, 2, 0, 12)
-print(a.generate())
