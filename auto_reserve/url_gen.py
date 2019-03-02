@@ -11,6 +11,7 @@ class URLGenerator():
         self.numAdult = numAdult
         self.numKid = numKid
         self.time_start = time_start
+        self.time_start_int = int(time_start.split(':')[0])
         self.time_end = time_end
 
         #extract station num
@@ -46,10 +47,10 @@ class URLGenerator():
         params['psgInfoPerPrnb1'] = self.numAdult
         params['psgInfoPerPrnb5'] = self.numKid
         
-        if (int(self.time_start) < 10):
-            params['dptTm'] = '0' + str(self.time_start) + '0000'
+        if (int(self.time_start_int) < 10):
+            params['dptTm'] = '0' + str(self.time_start_int) + '0000'
         else:
-            params['dptTm'] = str(self.time_start) + '0000'
+            params['dptTm'] = str(self.time_start_int) + '0000'
 
         url = url_base
         for i in params:

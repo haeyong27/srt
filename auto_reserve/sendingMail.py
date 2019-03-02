@@ -3,7 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 class Mail:
-    def __init__(self, text):
+    def __init__(self, text='예약됨 ㅎㅇㅎㅇ'):
         smtp = smtplib.SMTP('smtp.gmail.com', 587)
         smtp.ehlo()      # say Hello
         smtp.starttls()  # TLS 사용시 필요
