@@ -13,6 +13,7 @@ class Reserve():
         self.driver.get(self.url)
         self.dp_time_start = dp_time_start
         self.dp_time_end = dp_time_end
+        self.selected_time = []
 
     def login(self, srt_id, srt_pw, n):
         tag_category = self.driver.find_element_by_id('srchDvCd{}'.format(n))
@@ -32,23 +33,22 @@ class Reserve():
         time.sleep(1)
 
         
-    def dpTime_click(self):
+    def find_dptime(self):
         time_dic = dpt_time.ReserveButton(self.url).search_dpTime()
-        selected_time = []
 
         for k, v in time_dic.items():
             tempTime = datetime.datetime.strptime(v, "%H:%M")
             fromTime = datetime.datetime.strptime(self.dp_time_start, "%H:%M")
             toTime = datetime.datetime.strptime(self.dp_time_end, "%H:%M")
             if fromTime.time() <= tempTime.time() <= toTime.time():
-                selected_time.append(k)
+                self.selected_time.append(k)
 
-        for i in selected_time:
+    def click_dptime(self):
+        self.driver.refresh()
+        for i in self.selected_time:
             b = self.driver.find_elements_by_xpath('//a[@onclick="requestReservationInfo(this, {}, \'1\', \'1101\', true, false); return false;"]'.format(i))
             if (len(b) > 0):
                 b[0].click()
-        self.driver.refresh()
-        # print(selected_time)
 
     def complete(self):
         try:
@@ -66,4 +66,7 @@ if __name__ == '__main__':
     r.login('01021843577', 'sphv8401', 3)
     # time.sleep(1)
     r.get_reserve_url('동탄', '부산', '20190306', 2, 1)
-    r.dpTime_click()
+    r.find_dptime()
+
+    #예약화면으로 넘어갈 때 까지 클릭 반복하기, 아래 코드는 한번만 실행
+    r.click_dptime()
