@@ -34,7 +34,7 @@ class Run():
         #예약화면으로 넘어갈 때 까지 클릭 반복하기, 아래 코드는 한번만 실행
         while(True):
             self.res.click_dptime()
-            if self.res.complete == 1:
+            if self.res.complete() == 1:
                 break
 
 if __name__=='__main__':
