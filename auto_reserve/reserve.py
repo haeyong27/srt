@@ -15,7 +15,6 @@ class Reserve():
         self.dp_time_end = dp_time_end
 
     def login(self, srt_id, srt_pw, n):
-
         tag_category = self.driver.find_element_by_id('srchDvCd{}'.format(n))
         tag_category.click()
         tag_id = self.driver.find_element_by_id('srchDvNm0{}'.format(n))
@@ -30,6 +29,7 @@ class Reserve():
         c = url_gen.URLGenerator(start_stn, end_stn, date, adult, kid, self.dp_time_start, self.dp_time_end)
         self.url = c.urlGenerate()
         self.driver.get(self.url)
+        time.sleep(1)
 
         
     def dpTime_click(self):
@@ -37,16 +37,18 @@ class Reserve():
         selected_time = []
 
         for k, v in time_dic.items():
-            tempTime = datetime.datetime.strptime(v, "%H:%M") 
-            if self.dp_time_start.time() <= tempTime.time() <= self.dp_time_end.time():
+            tempTime = datetime.datetime.strptime(v, "%H:%M")
+            fromTime = datetime.datetime.strptime(self.dp_time_start, "%H:%M")
+            toTime = datetime.datetime.strptime(self.dp_time_end, "%H:%M")
+            if fromTime.time() <= tempTime.time() <= toTime.time():
                 selected_time.append(k)
 
-        # for i in selected_time:
-        #     b = self.driver.find_elements_by_xpath('//a[@onclick="requestReservationInfo(this, {}, \'1\', \'1101\', true, false); return false;"]'.format(i))
-        #     if (len(b) > 0):
-        #         b[0].click()
-        # self.driver.refresh()
-        print(selected_time)        
+        for i in selected_time:
+            b = self.driver.find_elements_by_xpath('//a[@onclick="requestReservationInfo(this, {}, \'1\', \'1101\', true, false); return false;"]'.format(i))
+            if (len(b) > 0):
+                b[0].click()
+        self.driver.refresh()
+        # print(selected_time)
 
     def complete(self):
         try:

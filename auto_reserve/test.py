@@ -9,8 +9,12 @@ import datetime
 # for i, time in enumerate(timelist, 1):
 #     time_dic[f'{i}'] = time
 # print(time_dic)
-s1 = '09:20'
-s2 = '10:10'
-z1 = datetime.datetime.strptime(s1, "%H:%M")
-z2 = datetime.datetime.strptime(s2, "%H:%M")
-print(z1.time() > z2.time())
+
+# s1 = '09:20'
+# s2 = '10:10'
+# z1 = datetime.datetime.strptime(s1, "%H:%M")
+# z2 = datetime.datetime.strptime(s2, "%H:%M")
+# print(z1.time() > z2.time())
+x= 3
+if 1< x < 5:
+    print('yes')
