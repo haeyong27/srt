@@ -49,24 +49,25 @@ class Reserve():
             b = self.driver.find_elements_by_xpath('//a[@onclick="requestReservationInfo(this, {}, \'1\', \'1101\', true, false); return false;"]'.format(i))
             if (len(b) > 0):
                 b[0].click()
+        time.sleep(1)
 
     def complete(self):
         try:
             self.driver.find_element_by_class_name('alert_box')
-            content = f'phone : {self.phone}'
-            sendingMail.Mail()
+            content = f'phone : {self.phone}, 예약됐어요 '
+            sendingMail.Mail(content)
             return 1
         except:
             return 0
 
 
 if __name__ == '__main__':
+
     r = Reserve('01021843577', '09:59', '14:10')
     # time.sleep(1)
     r.login('01021843577', 'sphv8401', 3)
     # time.sleep(1)
     r.get_reserve_url('동탄', '부산', '20190306', 2, 1)
     r.find_dptime()
-
     #예약화면으로 넘어갈 때 까지 클릭 반복하기, 아래 코드는 한번만 실행
     r.click_dptime()
