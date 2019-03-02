@@ -8,7 +8,7 @@ class Reserve():
     def __init__(self, phone, dp_time_start, dp_time_end):
         #로그인화면 창 열기
         self.phone = phone
-        self.driver = webdriver.Chrome('./driver/linux/chromedriver')
+        self.driver = webdriver.Chrome('driver/chromedriver')
         self.url = 'https://etk.srail.co.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000' 
         self.driver.get(self.url)
         self.dp_time_start = dp_time_start
