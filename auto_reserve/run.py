@@ -36,7 +36,7 @@ class Run():
             self.res.click_dptime()
             if self.res.complete() == 1:
                 break
-        self.res.driver.quit()
+                self.res.driver.quit()
 
 if __name__=='__main__':
     a = Run('01021843577', '01021843577', 'sphv8401', '동탄', '부산', '20190306', 2, 1, '09:59', '14:10')

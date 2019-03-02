@@ -13,5 +13,8 @@ class Mail:
         msg['Subject'] = 'srt 예약 완료'
         msg['To'] = 'ghkdgodydzz@gmail.com'
         smtp.sendmail('godyd2702@ajou.ac.kr', 'ghkdgodydzz@gmail.com', msg.as_string())
+
+        # msg['To'] = 'kms920612@gmail.com'
+        # smtp.sendmail('godyd2702@ajou.ac.kr', 'kms920612@gmail.com', msg.as_string())
     
         smtp.quit()

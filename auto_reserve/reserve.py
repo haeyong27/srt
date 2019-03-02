@@ -53,12 +53,12 @@ class Reserve():
 
     def complete(self):
         try:
-            self.driver.find_element_by_class_name('alert_box')
+            self.driver.find_element_by_class_name('btn_station_switch')
             content = f'phone : {self.phone}, 예약됐어요 '
             sendingMail.Mail(content)
-            return 1
-        except:
             return 0
+        except:
+            return 1
 
 
 if __name__ == '__main__':
