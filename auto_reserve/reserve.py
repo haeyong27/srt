@@ -12,7 +12,7 @@ class Reserve():
         options.add_argument('headless')
 
         self.phone = phone
-        self.driver = webdriver.Chrome('/home/ubuntu/getick/SRT/auto_reserve/driver/chromedriver', chrome_options=options)
+        self.driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=options)
         self.url = 'https://etk.srail.co.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000' 
         self.driver.get(self.url)
         self.dp_time_start = dp_time_start
