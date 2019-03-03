@@ -12,7 +12,7 @@ class Reserve():
         options.add_argument('headless')
 
         self.phone = phone
-        self.driver = webdriver.Chrome('./driver/chromedriver', chrome_options=options)
+        self.driver = webdriver.Chrome('/home/ubuntu/getick/SRT/auto_reserve/driver/chromedriver', chrome_options=options)
         self.url = 'https://etk.srail.co.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000' 
         self.driver.get(self.url)
         self.dp_time_start = dp_time_start
@@ -63,15 +63,3 @@ class Reserve():
             return 0
         except:
             return 1
-
-
-if __name__ == '__main__':
-
-    r = Reserve('01021843577', '09:59', '14:10')
-    # time.sleep(1)
-    r.login('01021843577', 'sphv8401', 3)
-    # time.sleep(1)
-    r.get_reserve_url('동탄', '부산', '20190306', 2, 1)
-    r.find_dptime()
-    #예약화면으로 넘어갈 때 까지 클릭 반복하기, 아래 코드는 한번만 실행
-    r.click_dptime()
