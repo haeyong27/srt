@@ -1,0 +1,10 @@
+django<3.0
+djangorestframework
+django-rest-auth
+django-allauth
+djangorestframework-jwt
+django-cors-headers
+celery
+slacker
+fake_useragent
+bs4
