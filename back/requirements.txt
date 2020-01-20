@@ -8,3 +8,4 @@ celery
 slacker
 fake_useragent
 bs4
+selenium

@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/nuxt,django
 # Edit at https://www.gitignore.io/?templates=nuxt,django
-
+virt/
 ### Django ###
 *.log
 *.pot
