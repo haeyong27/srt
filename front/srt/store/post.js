@@ -21,7 +21,7 @@ export const mutations = {
 
 export const actions = {
   register_post({ rootState }, payload) {
-    const url = "http://127.0.0.1:8000/post/";
+    const url = "http://127.0.0.1:8001/post/";
     const token = rootState.user.token;
     const params = {
       station_depart: payload.station_depart,
@@ -40,7 +40,7 @@ export const actions = {
   },
 
   register_ticket({ rootState }, payload) {
-    const url = "http://127.0.0.1:8000/ticket/";
+    const url = "http://127.0.0.1:8001/ticket/";
     const params = {
       srtid: payload.srtid,
       srtpw: payload.srtpw,
@@ -61,7 +61,7 @@ export const actions = {
   },
 
   start_ticket({rootState}, payload) {
-    const url = "http://127.0.0.1:8000/ticketing/"+payload;
+    const url = "http://127.0.0.1:8001/ticketing/"+payload;
     // const token = rootState.user.token;
     // this.$axios.setToken(token, "JWT");
     console.log(payload)
@@ -71,7 +71,7 @@ export const actions = {
   
 
   post_list({ rootState, commit }) {
-    const url = "http://127.0.0.1:8000/ticket/";
+    const url = "http://127.0.0.1:8001/ticket/";
     const token = rootState.user.token;
     // this.$axios.setToken(token, "JWT");
     this.$axios.$get(url).then(res => {
