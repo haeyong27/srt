@@ -8,14 +8,14 @@ import json
 import time
 import requests
 from datetime import datetime, timedelta
-
+API_KEY = os.getenv('SLACK_API_KEY')
 
 
 @shared_task(ignore_result=True)
 def srt(params):
     params = json.dumps(params)
     params = json.loads(params)
-    slacker = Slacker('xoxb-894078573298-906444907044-v0tYRQLJnNNWHy56ceO1qdpX')
+    slacker = Slacker(API_KEY)
     message = '---- 고객 : ' + params['phone'] + '의 출발지 : '+ params['dpt'] +'에서 ' + params['arr']
 
     options = webdriver.ChromeOptions()
