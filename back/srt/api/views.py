@@ -18,7 +18,7 @@ def index(request, pk):
     srt(serializer.data)
     return Response(serializer.data)
 
-    
+
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
