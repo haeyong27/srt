@@ -5,9 +5,10 @@
       <v-text-field v-model="username" label="username"></v-text-field>
       <v-text-field v-model="email" label="email"></v-text-field>
       <v-text-field v-model="password" label="password"></v-text-field>
-      <button>로그인하기</button>
-      <nuxt-link to="/register/">회원가입하기</nuxt-link>
+      <v-btn @click="submit">로그인</v-btn>
+      <v-btn to="/register/">회원가입</v-btn>
     </v-form>
+
   </div>
 </template>
 

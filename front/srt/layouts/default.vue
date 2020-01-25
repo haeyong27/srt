@@ -2,11 +2,30 @@
   <v-app id="keep">
     <v-app-bar app clipped-left color="amber">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <span class="title ml-3 mr-5">
-        Google&nbsp;
-        <span class="font-weight-light">Keep</span>
-      </span>
-      <v-text-field solo-inverted flat hide-details label="Search" prepend-inner-icon="search" />
+      <nuxt-link to="/">
+        <span class="title ml-3 mr-5" to>SRT</span>
+      </nuxt-link>
+      <v-spacer />
+      <v-spacer />
+      <v-spacer />
+      
+      <v-btn to="/login/" v-if="!login">
+        <v-icon>person_add</v-icon>로그인/회원가입
+      </v-btn>
+      <v-btn v-else @click="logout">
+        로그아웃
+      </v-btn>
+
+      <!-- <v-list-item to="/login/">
+        <v-list-item-action>
+          <v-icon>person_add</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>로그인/회원가입</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>-->
+
+      <!-- <v-text-field solo-inverted flat hide-details label="Search" prepend-inner-icon="search" /> -->
 
       <v-spacer />
     </v-app-bar>
@@ -23,7 +42,7 @@
             </v-col>
           </v-row>
           <v-divider v-else-if="item.divider" :key="i" dark class="my-4" />
-          <v-list-item v-else :key="i" link>
+          <v-list-item v-else :key="i" :to="`/${item.path}`">
             <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-action>
@@ -36,12 +55,10 @@
     </v-navigation-drawer>
 
     <v-content>
-      <v-container fluid class="grey lighten-4 fill-height">
+      <v-container>
         <v-row justify="center" align="center">
-          <v-col class="shrink">
-            
-            content haeyong
-
+          <v-col>
+            <nuxt />
           </v-col>
         </v-row>
       </v-container>
@@ -57,27 +74,39 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: "lightbulb_outline", text: "Notes" },
-      { icon: "touch_app", text: "Reminders" },
-      { divider: true },
-      { heading: "Labels" },
-      { icon: "add", text: "Create new label" },
-      { divider: true },
-      { icon: "archive", text: "Archive" },
-      { icon: "delete", text: "Trash" },
-      { divider: true },
-      { icon: "settings", text: "Settings" },
-      { icon: "chat_bubble", text: "Trash" },
-      { icon: "help", text: "Help" },
-      { icon: "phonelink", text: "App downloads" },
-      { icon: "keyboard", text: "Keyboard shortcuts" }
+      { icon: "home", text: "Home", path:"" },
+      { icon: "add", text: "새로 신청하기", path: "new/" },
+      { icon: "person", text: "신청 내역", path: "profile/" }
+      // { divider: true },
+      // { heading: "Labels" },
+      // { icon: "add", text: "Create new label" },
+      // { divider: true },
+      // { icon: "archive", text: "Archive" },
+      // { icon: "delete", text: "Trash" },
+      // { divider: true },
+      // { icon: "settings", text: "Settings" },
     ]
-  })
+  }),
+  computed: {
+    login() {
+       return this.$store.state.user.token
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.commit("user/logout")
+      this.$router.push("/");
+    }
+  },
 };
 </script>
 
 <style>
 #keep .v-navigation-drawer__border {
   display: none;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
