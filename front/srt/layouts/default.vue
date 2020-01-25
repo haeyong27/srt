@@ -9,10 +9,10 @@
       <v-spacer />
       <v-spacer />
       
-      <!-- <v-btn to="/" v-if="!login">
+      <v-btn to="/" v-if="!login">
         <v-icon>person_add</v-icon>로그인/회원가입
       </v-btn>
-      <v-btn v-else @click="logout">
+      <!-- <v-btn v-else @click="logout">
         로그아웃
       </v-btn> -->
 

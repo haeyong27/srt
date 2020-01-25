@@ -5,6 +5,11 @@
     </template>
   </v-data-table>-->
   <div>
+    <v-btn to='/new/'>티켓 신청하기</v-btn>
+    <br>
+    <br>
+
+
     <div v-for="post in posts" :key="post.id">
       <v-card class="mx-auto" max-width="344" outlined>
         <v-list-item three-line>
