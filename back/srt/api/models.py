@@ -1,9 +1,10 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 
 class Ticket(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
 
     srtid = models.CharField(max_length = 30)
     srtpw = models.CharField(max_length = 30)

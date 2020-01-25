@@ -26,6 +26,7 @@ export const actions = {
       this.$router.push("/profile/");
     });
   },
+
   login({ rootState, commit }, payload) {
     const url = "http://127.0.0.1:8000/rest-auth/login/";
     const params = {
@@ -39,6 +40,7 @@ export const actions = {
       this.$router.push("/profile/");
     });
   },
+  
   kakao_get_JWT({ rootState, commit }, payload) {
     const url = "http://127.0.0.1:8000/accounts/rest-auth/kakao/";
     const params = {
