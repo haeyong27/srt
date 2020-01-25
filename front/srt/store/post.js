@@ -21,7 +21,7 @@ export const mutations = {
 
 export const actions = {
   register_post({ rootState }, payload) {
-    const url = "http://127.0.0.1:8001/post/";
+    const url = "http://127.0.0.1:8000/post/";
     const token = rootState.user.token;
     const params = {
       station_depart: payload.station_depart,
@@ -32,7 +32,7 @@ export const actions = {
       time_begin: payload.time_begin,
       time_end: payload.time_end
     };
-    this.$axios.setToken(token, "JWT");
+    this.$axios.setToken(token, "bearer");
     this.$axios.$post(url, params).then(res => {
       console.log(res);
       this.$router.push("/");
@@ -40,7 +40,7 @@ export const actions = {
   },
 
   register_ticket({ rootState }, payload) {
-    const url = "http://127.0.0.1:8001/ticket/";
+    const url = "http://127.0.0.1:8000/ticket/";
     const params = {
       srtid: payload.srtid,
       srtpw: payload.srtpw,
@@ -56,14 +56,14 @@ export const actions = {
     };
     this.$axios.$post(url, params).then(res => {
       console.log(res);
-      this.$router.push("/");
+      this.$router.push("/u/");
     });
   },
 
   start_ticket({rootState}, payload) {
-    const url = "http://127.0.0.1:8001/ticketing/"+payload;
+    const url = "http://127.0.0.1:8000/ticketing/"+payload;
     // const token = rootState.user.token;
-    // this.$axios.setToken(token, "JWT");
+    // this.$axios.setToken(token, "bearer");
     console.log(payload)
     this.$axios.$get(url)
   },
@@ -71,9 +71,9 @@ export const actions = {
   
 
   post_list({ rootState, commit }) {
-    const url = "http://127.0.0.1:8001/ticket/";
+    const url = "http://127.0.0.1:8000/ticket/";
     const token = rootState.user.token;
-    // this.$axios.setToken(token, "JWT");
+    // this.$axios.setToken(token, "bearer");
     this.$axios.$get(url).then(res => {
       console.log(res);
       commit("set_posts", res);

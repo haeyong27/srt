@@ -8,7 +8,7 @@ export const mutations = {
   },
   logout(state) {
     state.token = null;
-  },
+  }
 };
 
 export const actions = {
@@ -38,5 +38,16 @@ export const actions = {
       commit("save_token", res.token);
       this.$router.push("/profile/");
     });
+  },
+  kakao_get_JWT({ rootState, commit }, payload) {
+    const url = "http://127.0.0.1:8000/accounts/rest-auth/kakao/";
+    const params = {
+      access_token: payload.access_token
+    };
+    this.$axios.$post(url, params).then(res => {
+      console.log(res);
+      commit("save_token", res.token);
+      this.$router.push("/u/");
+    })
   }
 };

@@ -24,4 +24,7 @@ class TicketViewSet(viewsets.ModelViewSet):
     serializer_class = TicketSerializer
     permission_classes = [AllowAny]
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
 

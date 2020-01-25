@@ -1,12 +1,13 @@
 <template>
   <div>
-    <button @click="handleClickGetAuth" :disabled="!isInit">
+    <!-- <button @click="handleClickGetAuth" :disabled="!isInit">
       <v-btn>
         구글로 로그인하기
       </v-btn>
-    </button>
-    <!-- <button @click="handleClickSignIn" v-if="!isSignIn" :disabled="!isInit">signIn</button>
-    <button @click="handleClickSignOut" v-if="isSignIn" :disabled="!isInit">signOout</button> -->
+    </button> -->
+    <v-btn @click="handleClickSignIn" :disabled="!isInit">구글로 로그인 하기</v-btn>
+    <!-- <v-btn @click="handleClickSignIn" v-if="!isSignIn" :disabled="!isInit">구글로 로그인 하기</v-btn> -->
+    <!-- <v-btn @click="handleClickSignOut" v-if="isSignIn" :disabled="!isInit">구글로 로그인 하기</v-btn> -->
   </div>
 </template>
 

@@ -3,7 +3,7 @@ from django.conf import settings
 
 
 class Ticket(models.Model):
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
     srtid = models.CharField(max_length = 30)
     srtpw = models.CharField(max_length = 30)

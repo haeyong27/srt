@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     # rest auth
     'rest_framework.authtoken',
     'rest_auth',
-    # rest auth registration
+    'rest_auth.registration',
+
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.google',
     'accounts',
-    'rest_auth.registration',
 
     'corsheaders',
 ]
@@ -175,3 +175,11 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)

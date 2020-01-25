@@ -1,9 +1,13 @@
 <template>
   <div>
     <h1>내 정보</h1>
+    <br>
+    <p>SRT ID : </p>
+    <p>SRT 비밀번호 : </p>
 
     <h2>신청내역</h2>
-    <v-data-table :headers="headers" :items="posts" :items-per-page="10" class="elevation-1"></v-data-table>
+    <!-- <v-data-table :headers="headers" :items="posts" :items-per-page="10" class="elevation-1"></v-data-table> -->
+    {{posts}}
 
   </div>
 </template>

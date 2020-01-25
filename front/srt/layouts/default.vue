@@ -2,19 +2,19 @@
   <v-app id="keep">
     <v-app-bar app clipped-left color="amber">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <nuxt-link to="/">
+      <nuxt-link to="/u/">
         <span class="title ml-3 mr-5" to>SRT</span>
       </nuxt-link>
       <v-spacer />
       <v-spacer />
       <v-spacer />
       
-      <v-btn to="/login/" v-if="!login">
+      <!-- <v-btn to="/" v-if="!login">
         <v-icon>person_add</v-icon>로그인/회원가입
       </v-btn>
       <v-btn v-else @click="logout">
         로그아웃
-      </v-btn>
+      </v-btn> -->
 
       <!-- <v-list-item to="/login/">
         <v-list-item-action>
@@ -74,7 +74,7 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: "home", text: "Home", path:"" },
+      { icon: "home", text: "Home", path:"u/" },
       { icon: "add", text: "새로 신청하기", path: "new/" },
       { icon: "person", text: "신청 내역", path: "profile/" }
       // { divider: true },

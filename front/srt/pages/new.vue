@@ -6,11 +6,11 @@
       <v-container fluid>
         <v-row align="center">
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="srtid" label="srtid"></v-text-field>
+            <v-text-field v-model="srtid" label="SRT ID"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="srtpw" label="srtpw"></v-text-field>
+            <v-text-field v-model="srtpw" label="SRT 비밀번호"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
@@ -18,40 +18,39 @@
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="phone" label="phone"></v-text-field>
+            <v-text-field v-model="phone" label="예약 완료시 연락받을 번호"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="dpt" label="dpt"></v-text-field>
+            <v-text-field v-model="dpt" label="출발지"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="arr" label="arr"></v-text-field>
+            <v-text-field v-model="arr" label="도착지"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="adult" label="adult"></v-text-field>
+            <v-text-field v-model="adult" label="어른 인원"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="child" label="child"></v-text-field>
+            <v-text-field v-model="child" label="아이 인원"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="date" label="date"></v-text-field>
+            <v-text-field v-model="date" label="출발 날짜"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="dptime" label="dptime"></v-text-field>
+            <v-text-field v-model="dptime" label="출발하고 싶은 시간"></v-text-field>
           </v-col>
 
           <v-col class="d-flex" cols="12" sm="6">
-            <v-text-field v-model="ticketnum" label="ticketnum"></v-text-field>
+            <v-text-field v-model="ticketnum" label="몇시 이후로 몇개"></v-text-field>
           </v-col>
         </v-row>
       </v-container>
-
-      <button>등록하기</button>
+      <v-btn @click="submit">등록하기</v-btn>
     </v-form>
   </div>
 </template>
