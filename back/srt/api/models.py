@@ -27,3 +27,6 @@ class Ticket(models.Model):
 
     def __str__(self):
         return str(self.id) +' : '+ self.phone
+
+    class Meta:
+        ordering = ["-id"]

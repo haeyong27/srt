@@ -76,7 +76,8 @@ export default {
     items: [
       { icon: "home", text: "Home", path:"u/" },
       { icon: "add", text: "새로 신청하기", path: "new/" },
-      { icon: "person", text: "신청 내역", path: "profile/" }
+      { icon: "person", text: "신청 내역", path: "profile/" },
+      { icon: "person", text: "관리자", path: "admin/" },
       // { divider: true },
       // { heading: "Labels" },
       // { icon: "add", text: "Create new label" },

@@ -26,3 +26,12 @@ class TicketViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if self.request.user.is_authenticated:
+            if not self.request.user.is_staff:
+                qs = qs.filter(author=self.request.user)
+        else:
+            qs = qs.none()
+        return qs
