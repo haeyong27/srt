@@ -10,8 +10,12 @@
     </v-form>
     <v-content>
       <div>
-        <!-- <kakao-login></kakao-login> -->
-        <google-login></google-login>
+        <div>
+          <kakao-login></kakao-login>
+        </div>
+        <div>
+          <google-login></google-login>
+        </div>
         <!-- <facebook-login></facebook-login> -->
       </div>
     </v-content>
@@ -19,7 +23,7 @@
 </template>
 
 <script>
-// import KakaoLogin from "../components/KakaoLogin";
+import KakaoLogin from "../components/KakaoLogin";
 import GoogleLogin from "../components/GoogleLogin";
 // import FacebookLogin from "../components/FacebookLogin";
 
@@ -44,8 +48,8 @@ export default {
     }
   },
   components: {
-    GoogleLogin
-    // KakaoLogin,
+    GoogleLogin,
+    KakaoLogin
     // FacebookLogin,
   }
 };
