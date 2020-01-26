@@ -37,22 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
+    'corsheaders',
+    'accounts',
     'api',
-    # rest auth
+
     'rest_framework.authtoken',
     'rest_auth',
     'rest_auth.registration',
 
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.google',
-    'accounts',
 
-    'corsheaders',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
