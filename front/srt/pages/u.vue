@@ -1,9 +1,4 @@
 <template>
-  <!-- <v-data-table :headers="headers" :items="posts" sort-by="calories" class="elevation-1">
-    <template v-slot:item.edit="{ item }">
-      <v-icon class="mr-2" @click="edit(item)">edit</v-icon>
-    </template>
-  </v-data-table>-->
   <div>
     <v-btn to='/new/'>티켓 신청하기</v-btn>
     <br>
@@ -16,15 +11,11 @@
           <v-list-item-content>
             <div>{{ post.date }}</div>
             <br>
-            <!-- <div class="overline">{{ post.date }}</div> -->
-            <!-- <div class="overline mb-4">{{ post.date }}</div> -->
             <v-list-item-title class="headline mb-1">
               {{post.dpt}}
               <v-icon>arrow_right</v-icon>
               {{post.arr}}
             </v-list-item-title>
-            <!-- <v-list-item-subtitle></v-list-item-subtitle> -->
-            <!-- {{ post.dptime }}시 이후 -->
             <p>성인 : {{ post.adult }}</p>
             <p>아이 : {{ post.child }}</p>
           </v-list-item-content>
